@@ -47,7 +47,8 @@ with DAG(
 
     append_meta = BashOperator(
         task_id='append.meta', 
-        bash_command="""$SPARK_HOME/bin/spark-submit $SCRIPT_BASE/movie_meta.py $RAW_BASE/dt={{ ds_nodash }} append $META PATH""",
+        bash_command="""$SPARK_HOME/bin/spark-submit $SCRIPT_BASE/movie_meta.py $RAW_BASE/dt={{ ds_nodash }} append $META_PATH""",
+        # bash_command=f"""{SPARK_HOME}/bin/spark-submit {SCRIPT_BASE}/movie_meta.py {RAW_BASE}/dt={{{{ ds_nodash }}}} append {META_PATH}""",
         env={
             "SPARK_HOME": SPARK_HOME, 
             "SCRIPT_BASE": SCRIPT_BASE,
@@ -58,7 +59,8 @@ with DAG(
     
     create_meta = BashOperator(
         task_id='create.meta',
-        bash_command="""$SPARK_HOME/bin/spark-submit $SCRIPT_BASE/movie_meta.py $RAW_BASE/dt={{ ds_nodash }} create $META PATH""",
+        bash_command="""$SPARK_HOME/bin/spark-submit $SCRIPT_BASE/movie_meta.py $RAW_BASE/dt={{ ds_nodash }} create $META_PATH""",
+        # bash_command=f"""{SPARK_HOME}/bin/spark-submit {SCRIPT_BASE}/movie_meta.py {RAW_BASE}/dt={{{{ ds_nodash }}}} create {META_PATH}""",
         env={
             "SPARK_HOME": SPARK_HOME, 
             "SCRIPT_BASE": SCRIPT_BASE,

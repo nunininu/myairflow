@@ -48,7 +48,7 @@ with DAG(
         bash_command="""
             echo "DT=====> {{ ds_nodash }}"
             
-            ssh -i ~/.ssh/gcp_key sgcho0907@34.64.162.91 \
+            ssh -i ~/.ssh/gcp_key_nunininu sgcho0907@34.64.162.91 \
             "/home/sgcho0907/code/test/run.sh {{ ds }}"
             
             # 에러 처리: Spark 작업 실패 시 에러 코드 반환 및 로그 출력
